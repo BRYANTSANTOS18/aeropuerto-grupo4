@@ -17,7 +17,8 @@ telefono            ->tel
 correo              ->cor
 clave               ->cla
 
-DBA: procedimenit para almencena ingresousuarios(id,nombre,pas,pis,tel,dir,cor,cla);
+DBA: procedimeinto almacena es insetarConsulta(string,int,string);
+call insetarConsulta('pepe',23,'20024/05/2');
 
 
 Front:  <input type=text id=idus >
