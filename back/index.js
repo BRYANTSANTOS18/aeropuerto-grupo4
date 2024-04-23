@@ -38,9 +38,15 @@ server.get("/",(req,resp)=>{
 server.post("/",(req,resp)=>{
     console.log(req);
     let codigo=req.body.codigo;
-    let nombew=req.body.nombre;
+    let nombe=req.body.nombre;
     let npasaporte=req.body.npasaporte;
-    let 
+    let pais= req.body.pais;
+    let direccion= req.body.direccion;
+    let telefono= req.body.telefono;
+    let correo= req.body.correo;
+    let clave= req.body.clave;
+
+    const sql='('${codigo}', '${nombre}','$
 
 
     });
