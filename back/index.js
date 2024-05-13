@@ -28,12 +28,7 @@ const poolmysql=mysql.createPool(configdb);
 
 
 
-server.get("/",(req,resp)=>{
-    poolmysql.query(sql, function(err,result){
-        if(err) throw resp.end("Base de datos fallando");
-        res,poolmysql.json(result);
-    });
-});
+
 
 server.post("/",(req,resp)=>{
     console.log(req);
@@ -46,7 +41,29 @@ server.post("/",(req,resp)=>{
     let correo= req.body.correo;
     let clave= req.body.clave;
 
-    const sql='('${codigo}', '${nombre}','$
-
+    const sql='('${codigo}', '${nombre}','${npasaporte}','{$pais}','{$direccion}','{$telefono}','{$correo}','{$clave}')';
+     poolmysql.query(sql, function(err, result ){
+        if(err) throw reportError.status(201).send(201);
+     });
+     rep.status(201).send(201);
 
     });
+
+
+    server.get("/",(req,resp)=>{
+        poolmysql.query(sql, function(err,result){
+            if(err) throw resp.end("Base de datos fallando");
+            response.json(result);
+        });
+    });
+
+    
+    server.delete("/",(req,rep)=>{
+        let id=req.body.codigo;
+        const sql= ''$(codigo)'';
+        pollmysql.query(sql, function(err, result){
+            if(err) throw rep.result(201).send(201);
+        });
+        rep.status(201).send(201);
+    });
+
