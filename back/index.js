@@ -41,7 +41,7 @@ server.post("/",(req,resp)=>{
     let correo= req.body.correo;
     let clave= req.body.clave;
 
-    const sql='('${codigo}', '${nombre}','${npasaporte}','{$pais}','{$direccion}','{$telefono}','{$correo}','{$clave}')';
+   
      poolmysql.query(sql, function(err, result ){
         if(err) throw reportError.status(201).send(201);
      });
@@ -58,12 +58,7 @@ server.post("/",(req,resp)=>{
     });
 
     
-    server.delete("/",(req,rep)=>{
-        let id=req.body.codigo;
-        const sql= ''$(codigo)'';
-        pollmysql.query(sql, function(err, result){
-            if(err) throw rep.result(201).send(201);
-        });
-        rep.status(201).send(201);
-    });
+  
+
+  
 
