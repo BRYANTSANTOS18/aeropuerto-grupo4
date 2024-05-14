@@ -21,44 +21,42 @@ const configdb={
     host:'localhost',
     user:'root',
     password:'',
-    database:'',
+    database:'aeropuerto ',
 };
 
 const poolmysql=mysql.createPool(configdb);
 
 
-
-
-
-server.post("/",(req,resp)=>{
+server.ingreso("/", (req,rep)=>{
     console.log(req);
-    let codigo=req.body.codigo;
-    let nombe=req.body.nombre;
-    let npasaporte=req.body.npasaporte;
-    let pais= req.body.pais;
-    let direccion= req.body.direccion;
-    let telefono= req.body.telefono;
-    let correo= req.body.correo;
-    let clave= req.body.clave;
-
-   
-     poolmysql.query(sql, function(err, result ){
-        if(err) throw reportError.status(201).send(201);
-     });
-     rep.status(201).send(201);
-
+    let id=req.body.id;
+    let nombre=req.body.nombre;
+    const sql=`('${id}','${nombre}')`;
+    poolmysql.query(sql, function(err,result){
+        if(err) throw rep.status(201).send(201);
     });
+    req.status(201).send(201);
+});
 
 
-    server.get("/",(req,resp)=>{
-        poolmysql.query(sql, function(err,result){
-            if(err) throw resp.end("Base de datos fallando");
-            response.json(result);
-        });
+
+server.delete("/",(req,rep)=>{
+    let id=req.body.id;
+    const sql=`delete from aeropuerto where id='${id}'`;
+    poolmysql.query(sql,function(err,result){
+        if(err) throw rep.status(201).send(201);
     });
+    rep.status(201).send(201);
+});
 
-    
-  
 
-  
+server.select("/",(req, rep)=>{
+    const sql="select * from";
+    poolmysql.query(sql, function(err,result){
+        if(err) throw resp.end("Fallo en la base de datos");
+        resp.json(result);
+    });
+});
+
+
 
